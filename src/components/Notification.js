@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => ({
     top: theme.spacing(9),
   },
 }));
-
-export default function Notification() {
+// this a notification componet to informe the user after deleting, creating and editing the task and W it's controled from redux 
+const Notification =() => {
   const notify = useSelector(({ taskManager }) => taskManager.notify);
   const dispatcher = useDispatch();
 
@@ -42,3 +42,4 @@ export default function Notification() {
     </Snackbar>
   );
 }
+export default Notification

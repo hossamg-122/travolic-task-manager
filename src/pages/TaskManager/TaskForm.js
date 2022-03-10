@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
 import Fields from "../../components/fields/Fields";
 import { Formik, Form } from "formik";
@@ -8,13 +8,33 @@ import { makeStyles } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask, editTask } from "../../store/actions";
 
+// this component is for creating task form in both creating and editing process
+// I use Formik and yup to control and validate the form they are so powerful
+
 const TaskForm = () => {
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      "& .MuiFormControl-root": {
+        width: "80%",
+        margin: theme.spacing(1),
+      },
+    },
+  }));
+
+  const classes = useStyles();
+  const dispatcher = useDispatch();
+
+  // I get the initial values of the form from redux to make it easy during editing as I fire an action to set the initial values with
+  // the values of the task that user wants to edit
   const initialValues = useSelector((state) => state.taskValues);
   
+  // this is the validation component of the values
   const validation = yup.object({
     title: yup.string().required("required"),
     description: yup.string().required("required"),
     start_date: yup.string().required("required"),
+
+    // this validate that dead line is after the start date
     dead_line: yup
       .string()
       .required("required")
@@ -31,19 +51,12 @@ const TaskForm = () => {
     assigned_to:yup.string().required("required"),
     status: yup.string().required("required"),
   });
-  const dispatcher = useDispatch();
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      "& .MuiFormControl-root": {
-        width: "80%",
-        margin: theme.spacing(1),
-      },
-    },
-  }));
+  
+  
 
-  const classes = useStyles();
-
-  const handleSubmit = (values, resetForm) => {
+  const handleSubmit = (values) => {
+    // this function fires the action of adding or editing the task regarding that the task has id which means it's an existing task or not 
+    // which means it's a new task
     if (values.id) {
       dispatcher(editTask(values));
     } else {
@@ -55,8 +68,8 @@ const TaskForm = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validation}
-      onSubmit={(values, { resetForm }) => {
-        handleSubmit(values, resetForm);
+      onSubmit={(values) => {
+        handleSubmit(values);
       }}
     >
       {(formValues) => (

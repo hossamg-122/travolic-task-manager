@@ -1,3 +1,7 @@
+// this a higher order function above redux i use it to make a global reducer for the application it makes my work easy 
+// and i don't have to make types and reducers
+
+
 const initialState = {
     openPopup:false,
     notify:{

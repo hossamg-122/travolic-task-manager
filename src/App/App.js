@@ -1,22 +1,16 @@
 import React from "react";
-import "./App.css";
 
-import {
-  makeStyles,
-  CssBaseline,
-  createMuiTheme,
-  ThemeProvider,
-} from "@material-ui/core";
-
-
+import { CssBaseline, createMuiTheme, ThemeProvider } from "@material-ui/core";
+// this to import the styles from styles file
+import makeStyles from "./style";
 
 import TaskManager from "../pages/TaskManager/TaskManager";
-
+// this theme to control the colors from one place
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#d6de29",
-      light: "#2BA6DE",
+      main: "#2BA6DE",
+      light: "#d6de29",
     },
     secondary: {
       main: "#f83245",
@@ -40,21 +34,12 @@ const theme = createMuiTheme({
   },
 });
 
-const useStyles = makeStyles({
-  appMain: {
-    margin: "0 auto",
-    width: "80%",
-  },
-});
-
-function App() {
-  const classes = useStyles();
+const App =() => {
+  const classes = makeStyles();
 
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.appMain}>
-    
-
         <TaskManager />
       </div>
       <CssBaseline />

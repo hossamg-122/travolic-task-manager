@@ -2,7 +2,7 @@ import React from 'react'
 import { Dialog, DialogTitle, DialogContent, DialogActions, Typography, makeStyles, IconButton } from '@material-ui/core'
 import Controls from "./fields/Fields";
 import NotListedLocationIcon from '@material-ui/icons/NotListedLocation';
-
+// this a dialoge componet to alert the user before deleteing the task and it takes it's content as props  
 
 const useStyles = makeStyles(theme => ({
     dialog: {
@@ -32,9 +32,9 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function ConfirmDialog(props) {
+ const ConfirmDialog = ({ confirmDialog, setConfirmDialog }) => {
 
-    const { confirmDialog, setConfirmDialog } = props;
+   
     const classes = useStyles()
 
     return (
@@ -65,3 +65,4 @@ export default function ConfirmDialog(props) {
         </Dialog>
     )
 }
+export default ConfirmDialog

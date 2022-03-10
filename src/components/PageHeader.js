@@ -24,7 +24,9 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function PageHeader( { title, subTitle, logo }) {
+// this component controles the header of the page
+
+const PageHeader = ( { title, subTitle, logo }) => {
 
     const classes = useStyles();
    
@@ -48,3 +50,4 @@ export default function PageHeader( { title, subTitle, logo }) {
         </Paper>
     )
 }
+export default PageHeader

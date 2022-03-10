@@ -15,7 +15,9 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function Popup({ title, children} ) {
+// this a pop up componet to show task form in both creating and editing process and it's controled from redux 
+
+const Popup = ({ title, children} ) => {
 const dispatcher = useDispatch()
     const openPopup = useSelector(({taskManager}) => taskManager.openPopup);
     const classes = useStyles();
@@ -48,3 +50,4 @@ const dispatcher = useDispatch()
         </Dialog>
     )
 }
+export default Popup

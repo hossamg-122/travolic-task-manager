@@ -1,14 +1,7 @@
 import { UPDATE_FORM_VALUES,RESET_FORM_VALUES } from "../actions/types";
 
 const initialValues = {
-   
-    // title: "",
-    // description: "",
-    // start_date: "",
-    // dead_line: "",
-    // priority:{id:'',title:''},
-    // assigned_to:{id:'',title:''},
-    // status:{id:'',title:''},
+
     title: "",
     description: "",
     start_date: "",

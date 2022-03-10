@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// this component is for controlling task table header, pagination and sorting   
+
 export default function useTable(records, headCells, filterFn) {
   const classes = useStyles();
 
